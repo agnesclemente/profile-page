@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Profile Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+      @font-face {
+      font-family: 'MS';
+      src: url(font/W95FA.otf) format("opentype"),
+        url(font/w95fa.woff) format("woff");
+      }
+
+      .icon{
+        width: 50px;
+        margin-bottom: -10px;
+      }
+
+      .icon-label {
+        font-size: 15px;
+        color: white;
+        font-family: 'MS', Arial;
+        text-align: center;
+
+      }
+      
+      .notepad {
+        position: absolute;
+        background-color: rgb(181, 181, 181);
+        height: 300px;
+        width: 500px;
+        border-top: 2px solid white;
+        border-left: 2px solid white;
+        border-right: 2px solid black;
+        border-bottom: 2px solid black;
+        top: 200px;
+        left: 475px;
+        visibility: hidden;
+
+      }
+
+      .about-me:hover .notepad {
+        visibility: visible;
+      }
+
+      .music:hover .notepad {
+        visibility: visible;
+      }
+
+      .games:hover .notepad {
+        visibility: visible;
+      }
+
+      .movies:hover .notepad {
+        visibility: visible;
+      }
+
+      .tv-shows:hover .notepad {
+        visibility: visible;
+      }
+
+      .hobbies:hover .notepad {
+        visibility: visible;
+      }
+
+      .notepad-header {
+        height: 17px;
+        background-color: rgb(8, 41, 151);
+        color: white;
+        font-family: 'MS', Arial;
+        margin: 2px;
+        padding: 3px;
+      }
+      
+      .notepad-options {
+        height: 20px;
+        margin-left: 10px;
+        font-family: 'MS', Arial;
+        margin-top: 7px;
+      }
+
+      .notepad-text {
+        height: 230px;
+        background-color: white;
+        line-height: 20px;
+        margin: 2px;
+        font-family: 'MS', Arial;
+        border-left: 2px solid rgb(142, 142, 142);
+        border-top: 2px solid rgb(142, 142, 142);
+        border-right: 2px solid rgb(91, 91, 91);
+        border-bottom: 2px solid rgb(91, 91, 91);
+        padding: 4px;
+        position: relative;
+      }
+
+      .instructions {
+        position: absolute;
+        background-color: rgb(181, 181, 181);
+        height: 150px;
+        width: 250px;
+        border-top: 2px solid white;
+        border-left: 2px solid white;
+        border-right: 2px solid black;
+        border-bottom: 2px solid black;
+        top: 100px;
+        right: 50px;
+      }
+
+      .instructions-header {
+        height: 17px;
+        background-color: rgb(8, 41, 151);
+        color: white;
+        font-family: 'MS', Arial;
+        margin: 2px;
+        padding: 3px;
+      }
+
+      .instructions-options {
+        height: 20px;
+        margin-left: 10px;
+        font-family: 'MS', Arial;
+        margin-top: 7px;
+      }
+
+      .instructions-text {
+        height: 80px;
+        background-color: white;
+        line-height: 20px;
+        margin: 2px;
+        font-family: 'MS', Arial;
+        border-left: 2px solid rgb(142, 142, 142);
+        border-top: 2px solid rgb(142, 142, 142);
+        border-right: 2px solid rgb(91, 91, 91);
+        border-bottom: 2px solid rgb(91, 91, 91);
+        padding: 4px;
+        position: relative;
+      }
+
+      .minion {
+        height: 140px;
+        position: absolute;
+        right: 2px;
+      }
+
+      .menu {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        height: 40px;
+        width: 100%;
+        background-color: rgb(181, 181, 181);
+        border-top: 2px solid white;
+        display: grid;
+        grid-template-columns: 100px 8px 20px 60px 60px 50px 8px 5px ;
+        padding: 3px;
+      }
+
+
+      .start-button {
+        height: 40px;
+        display: grid;
+        grid-template-columns: 25px 55px;
+        background-color: rgb(181, 181, 181);
+        border-top: 2px solid white;
+        border-left: 2px solid white;
+        border-right: 2px solid black;
+        border-bottom: 2px solid black;
+      }
+
+      .start-button:hover {
+        cursor: pointer;
+      }
+
+      .start-button:active {
+        background-color: rgb(142, 142, 142);
+        border-top: 2px solid rgb(106, 106, 106);
+        border-left: 2px solid rgb(106, 106, 106);
+        border-right: 2px solid rgb(46, 46, 46);
+        border-bottom: 2px solid rgb(46, 46, 46);
+      }
+
+      .start-text {
+        font-family: 'VT323', monospace;
+        font-size: 25px;
+        padding-top: 3px;
+        padding-left: 9px;
+      }
+
+      .line {
+        width: 0px;
+        height: 40px;
+        border-left: 2px solid rgb(131, 131, 131);
+        border-right: 1px solid white;
+      }
+
+      .divider {
+        height: 33px;
+        margin-top: 2px;
+        width: 2px;
+        border-right: 1px solid rgb(131, 131, 131);
+        border-bottom: 1px solid rgb(131, 131, 131);
+        border-left: 2px solid white;
+        border-top: 2px solid white;
+      }
+
+      .menu-icon {
+        padding-top: 4px;
+      }
+
+      .discord-icon, .facebook-icon, .instagram-icon {
+        position: relative
+      }
+
+      .socials-label {
+        position: absolute;
+        top: -50px;
+        left: -20px;
+        font-family: 'MS', Arial;
+        background-color: rgb(181, 181, 181);
+        border-top: 2px solid white;
+        border-left: 2px solid white;
+        border-right: 2px solid black;
+        border-bottom: 2px solid black;
+        padding: 7px;
+        visibility: hidden;
+      }
+
+      .discord-icon:hover .socials-label {
+        visibility: visible;
+      }
+
+      .instagram-icon:hover .socials-label {
+        visibility: visible;
+      }
+
+      .facebook-icon:hover .socials-label {
+        visibility: visible;
+      }
+
+      
+
+    </style>
+  </head>
+  <body style="background-color: #00807F;">
+    <div class="instructions">
+      <div class="instructions-header">Untitled - Notepad</div>
+      <div class="instructions-options"><u>F</u>ile <u>E</u>dit <u>S</u>earch <u>H</u>elp</div>
+      <div class="instructions-text">
+        Hover over icons to view.
+      </div>
+    </div>
+    <div style="
+    display: grid;
+    grid-template-columns: 50px 50px;
+    column-gap: 25px;
+    row-gap: 20px;
+    ">
+      <div class="about-me">
+        <img class="icon" src="icons/about-me.png">
+          <div class="notepad">
+            <div class="notepad-header">About Me - Notepad</div>
+            <div class="notepad-options"><u>F</u>ile  <u>E</u>dit  <u>S</u>earch  <u>H</u>elp</div>
+            <div class="notepad-text">
+              Hello! My name is Agnes. :D<br>
+              - - -<br>
+              Degree: Bachelor of Computer Science<br>
+              Year: First Year<br>
+              MBTI: INFJ-T<br>
+              Enneagram: 5w4<br>
+
+            </div>
+          </div>
+        <p class="icon-label">About Me</p>
+      </div>
+      <div class="music"> 
+        <img class="icon" src="icons/music.png">
+          <div class="notepad">
+            <div class="notepad-header">Music - Notepad</div>
+            <div class="notepad-options"><u>F</u>ile  <u>E</u>dit  <u>S</u>earch  <u>H</u>elp</div>
+            <div class="notepad-text">
+              <u>Top Artists:</u><br>
+              - Green Day<br>
+              - The Front Bottoms<br>
+              - IV of Spades<br>
+              <br>
+              <u>Top Songs:</u><br>
+              - Mundo - IV of Spades<br>
+              - Floral and Fading - Pierce the Veil<br>
+              - When - dodie<br>
+            </div>
+          </div>
+        <p class="icon-label">Music</p>
+      </div>
+      <div class="games">
+        <img class="icon" src="icons/games.png">
+          <div class="notepad">
+            <div class="notepad-header">Games - Notepad</div>
+            <div class="notepad-options"><u>F</u>ile  <u>E</u>dit  <u>S</u>earch  <u>H</u>elp</div>
+            <div class="notepad-text">
+              <u>Favourite Games:</u><br>
+              - To The Moon<br>
+              - Harvest Moon: Back to Nature<br>
+              - Tetris
+            </div>
+          </div>
+        <p class="icon-label">Games</p>
+
+      </div>
+      <div></div>
+      <div class="movies"> 
+        <img class="icon" src="icons/movies.png">
+          <div class="notepad">
+            <div class="notepad-header">Movies - Notepad</div>
+            <div class="notepad-options"><u>F</u>ile  <u>E</u>dit  <u>S</u>earch  <u>H</u>elp</div>
+            <div class="notepad-text">
+              <u>Favourite Movies:</u><br>
+              - Everything, Everywhere All at Once<br>
+              - Ulan<br>
+              - Promising Young Woman<br>
+            </div>
+          </div>
+        <p class="icon-label">Movies</p>
+      </div>
+      <div></div>
+      <div class="tv-shows">
+        <img class="icon" src="icons/tv.png">
+          <div class="notepad">
+            <div class="notepad-header">TV Shows - Notepad</div>
+            <div class="notepad-options"><u>F</u>ile  <u>E</u>dit  <u>S</u>earch  <u>H</u>elp</div>
+            <div class="notepad-text">
+              <u>Favourite TV Shows:</u><br>
+              - Fleabag<br>
+              - While You Were Sleeping<br>
+              - Nana<br>
+            </div>
+          </div>
+        <p class="icon-label">TV Shows</p>
+      </div>
+      <div></div>
+      <div class="hobbies"> 
+        <img class="icon" src="icons/hobbies.png">
+          <div class="notepad">
+            <div class="notepad-header">Interests - Notepad</div>
+            <div class="notepad-options"><u>F</u>ile  <u>E</u>dit  <u>S</u>earch  <u>H</u>elp</div>
+            <div class="notepad-text">
+              <u>Crochet</u><br>
+              <img class="minion" src="hobbies/minion.jpg">
+              - resulted in a drawer overflowing with <br>
+              yarn<br>
+              - very time consuming<br>
+              - my go-to when I want to procrastinate<br>
+              <br>
+              <u>Sewing</u><br>
+              - usually just making bags and reworking <br>
+              old clothes<br>
+              - hope to, one day, be able to sew clothes from scratch
+
+            </div>
+          </div>
+        <p class="icon-label">Interests</p>
+      </div>
+
+    </div>
+    <div class="menu">
+      <div>
+        <button class="start-button" onclick="audio.play();">
+          <div><img class="start-icon" src="menu/start.png"></div>
+          <div class="start-text">Start</div>
+        </button>
+        <script type="text/javascript">
+          const audio = new Audio();
+          audio.src = "menu/startup-audio.mp3";
+        </script>
+      </div>
+      <div class="line"></div>
+      <div class="divider"></div>
+      <div class="discord-icon">
+        <a href="https://discordapp.com/users/697741860415733771/" target="_blank">
+          <img class="menu-icon" src="menu/discord.png">
+        </a>
+        <p class="socials-label"><u>D</u>iscord</p>
+      </div>
+      <div class="instagram-icon">
+        <a href="https://www.instagram.com/agnesclemente_/" target="_blank">
+          <img class="menu-icon" src="menu/instagram.png">
+        </a>
+        <p class="socials-label">I<u>n</u>stagram</p>
+      </div>
+      <div class="facebook-icon">
+        <a href="https://www.facebook.com/agnes.clemente.355/" target="_blank">
+          <img class="menu-icon" src="menu/facebook.png">
+        </a>
+        <p class="socials-label"><u>F</u>acebook</p>
+      </div>
+      <div class="line"></div>
+      <div class="divider"></div>
+    </div>
+  </body>
+</html>
